@@ -1,0 +1,53 @@
+# Set the start directory
+chdir
+
+# geen visual bell
+vbell off
+
+# setup 12000 lines of available scrollback.
+# consumes memory!
+defscrollback 12000
+
+# Set the title
+shelltitle ${HOSTNAME}
+
+# Enable alternate screen support
+altscreen on
+
+# Set the terminal.
+#term xterm-256color
+
+# Set termcap, terminfo and termcapinfo settings.
+termcap xterm* xn
+termcapinfo xterm* ti@:te@
+termcapinfo xterm* 'hs:ts=\E]2;:fs=\007:ds=\E]2;\007'
+
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+
+# tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Backtick command
+# TO DO
+#backtick 0 30 30 bash -c 'screen -ls | grep --color=no -o "$PPID[^[:space:]]*"'
+
+# set the xterm title
+hardstatus alwayslastline
+hardstatus string "%{= KG} %H%{= KW} |%{= KY} %h%{= KW} |%{= KY} [%`]%{= KW} |%-=%{= KW} %D %M %d %Y%{= KC} %c%{-}"
+
+# Display the status bar
+caption always
+caption string "%{= Wb} %L=%-w%45>%{= bW} %t %{-}%+w%-0<"
+
+# CTRL+left/right for window switching
+bindkey "^[[D" prev
+bindkey "^[[C" next
+bindkey "^[[1;5D" prev
+bindkey "^[[1;5C" next
+
+# If a window goes unresponsive, don't block the whole session waiting for it.
+nonblock on
+
+# Don't display the copyright page
+startup_message off
