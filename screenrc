@@ -15,7 +15,7 @@ shelltitle ${HOSTNAME}
 altscreen on
 
 # Set the terminal.
-#term xterm-256color
+term xterm-256color
 
 # Set termcap, terminfo and termcapinfo settings.
 termcap xterm* xn
